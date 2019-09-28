@@ -1,0 +1,45 @@
+@inject HttpClient Http
+
+@using blazor_dynamic_themes_sample.Models
+
+<h1>Hello, `Temperature` from `Redwood` theme</h1>
+
+Welcome to BLAZOR.
+
+<p>This component demonstrates fetching <b>temperature</b> from the server.</p>
+
+@if (weather == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var day in weather)
+            {
+                <tr>
+                    <td>@day.Date.ToShortDateString()</td>
+                    <td>@day.TemperatureC</td>
+                    <td>@day.TemperatureF</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    Weather[] weather;
+
+    protected override async Task OnInitializedAsync()
+    {
+        weather = await Http.GetJsonAsync<Weather[]>("sample-data/weather.json");
+    }
+}

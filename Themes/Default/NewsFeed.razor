@@ -1,0 +1,43 @@
+@inject HttpClient Http
+
+@using blazor_dynamic_themes_sample.Models
+
+<h1>Hello, `News Feed` from `Default` theme</h1>
+
+Welcome to BLAZOR.
+
+<p>This component demonstrates fetching <b>news</b> feed from the server.</p>
+
+@if (weather == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>News</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var day in weather)
+            {
+                <tr>
+                    <td>@day.Date.ToShortDateString()</td>
+                    <td>@day.News</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    Weather[] weather;
+
+    protected override async Task OnInitializedAsync()
+    {
+        weather = await Http.GetJsonAsync<Weather[]>("sample-data/weather.json");
+    }
+}

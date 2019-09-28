@@ -1,0 +1,37 @@
+[
+    {
+      "date": "2019-09-21",
+      "temperatureC": 1,
+      "summary": "Freezing",
+      "temperatureF": 33,
+      "news": "Live matches | Football | The Guardian"
+    },
+    {
+      "date": "2019-09-22",
+      "temperatureC": 14,
+      "summary": "Bracing",
+      "temperatureF": 57,
+      "news": "Badminton match"
+    },
+    {
+      "date": "2019-09-23",
+      "temperatureC": -13,
+      "summary": "Freezing",
+      "temperatureF": 9,
+      "news": "Dotnetconf Day-1"
+    },
+    {
+      "date": "2019-09-24",
+      "temperatureC": -16,
+      "summary": "Balmy",
+      "temperatureF": 4,
+      "news": "Dotnetconf Day-2"
+    },
+    {
+      "date": "2019-09-25",
+      "temperatureC": -2,
+      "summary": "Chilly",
+      "temperatureF": 29,
+      "news": "Dotnetconf Day-3"
+    }
+]

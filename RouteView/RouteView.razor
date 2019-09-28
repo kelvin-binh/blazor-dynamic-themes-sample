@@ -1,0 +1,46 @@
+@page "/{page}"
+
+@using blazor_dynamic_themes_sample.Models
+
+@inject HttpClient _http
+@inject AppState _appState
+
+@DrawPageTemplate()
+
+@code {
+
+    [Parameter]
+    public string Page { get; set; }
+    
+    RenderFragment DrawPageTemplate()
+    {
+        return new RenderFragment(builder =>
+        {
+            string componentName = $"blazor_dynamic_themes_sample.Themes.{_appState.ActiveTheme}.{Page}";
+            Type componentType = Type.GetType(componentName);
+            if (componentType != null)
+            {
+                builder.OpenComponent(0, componentType);
+                builder.CloseComponent();
+            }
+        });
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _settings = await _http.GetJsonAsync<Settings>("sample-data/settings.json");
+        
+        string activeTheme = _settings != null ? _settings.ActiveTheme : "Default";
+
+        _appState.SetTheme(activeTheme);
+    }
+
+    protected override void OnInitialized()
+    {
+        _appState.OnChange += StateHasChanged;
+
+        Page = Page ?? "Dashboard";
+    }
+
+    Settings _settings;
+}
