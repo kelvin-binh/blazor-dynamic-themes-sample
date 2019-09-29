@@ -1,9 +1,9 @@
-# How to active dynamic new theme in BlazorWasm app
+# How to implement multiple themes in BlazorWasm app
 By [Kelvin Binh](https://github.com/kelvin-binh)
 
-The simple project demonstrates how to active dynamic new theme in BlazorWasm app 
+The simple project demonstrates how to implement multiple themes in BlazorWasm app
 
-> Usage with careful: The project is in experimental research about Blazor WASM with .NET Core 3.0 SDK
+> Usage with careful: The project is in experimental research for BlazorWasm with .NET Core 3.0 SDK
 
 ## Screenshots
 
